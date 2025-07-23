@@ -49,7 +49,11 @@ Exo 4-------------------------------
 >>>
 
 -------------------------------Niveau 2 ------------------
-###Day 1 of python code togo
+###Exercice 1
+import sys
+print("la version de python est : ", sys.version)
+
+##Exercice 2
 print(3 + 4)
 print(3 - 4)
 print(3 * 4)
