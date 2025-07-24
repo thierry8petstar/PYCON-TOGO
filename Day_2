@@ -1,0 +1,71 @@
+#'Day 2: 30 Days of python programming
+
+#-----------------------------Exercice level 1 --------------------
+first_name = "Abalo"
+last_name = "KPATCHA"
+full_name = "ABALO KPATCHA"
+country = "Togo"
+city = "Lome"
+age = 25
+year = 2025
+is_maried = False
+is_true = True
+is_light_on = False
+hobies, anime = "Football", "One piece"
+
+#-----------------------------Exercice level 2 --------------------
+print(type(first_name))
+print(type(last_name))
+print(type(full_name))
+print(type(country))
+print(type(city))
+print(type(age))
+print(type(year))
+print(type(is_maried))
+print(type(is_true))
+print(type(is_light_on))
+print(type(hobies))
+print(type(anime))
+
+print(len(first_name))
+print(len(last_name))
+
+print(len(first_name) > len(last_name))
+
+num_one = 5
+num_two = 4
+
+total = num_one + num_two
+
+dif = num_one - num_two
+
+product = num_one * num_two
+
+division = num_one / num_two
+
+remainder = num_one % num_two
+
+exp = num_one ** num_two
+
+floor_division = num_one // num_two
+
+import math
+r = 30
+area_of_circle = r **2 * math.pi
+print("Area of circle is: ", area_of_circle)
+
+
+circum_of_circle = 2 * math.pi * r
+print("circum of circle is:", circum_of_circle)
+
+
+radius = int(input("Enter the radius: "))
+new_area = radius **2 * math.pi
+print("The area of this circle is ", new_area)
+
+
+First_name = input(str("First name: "))
+Last_name = input(str("Last name: "))
+Country = input(str("Which contry do you come from: "))
+Age = input(str("Put your age here: "))
+print("Your first name is :", First_name, ", last name: ", Last_name, ", Age: ", Age, ", Country: ", Country)
