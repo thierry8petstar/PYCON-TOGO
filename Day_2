@@ -69,3 +69,5 @@ Last_name = input(str("Last name: "))
 Country = input(str("Which contry do you come from: "))
 Age = input(str("Put your age here: "))
 print("Your first name is :", First_name, ", last name: ", Last_name, ", Age: ", Age, ", Country: ", Country)
+
+help('keywords')
