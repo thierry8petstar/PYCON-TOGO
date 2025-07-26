@@ -1,0 +1,151 @@
+#----------------------------------------Day 4 variables-------------------------
+#question 1
+a, b, c, d = 'Thirty', 'Days', 'Of', 'Python'
+print(a + ' ' + b + ' ' + c + ' ' +  d)
+
+#question 2
+a, b, c = 'Coding', 'For' , 'All'
+print(a + ' ' + b + ' ' + c)
+
+#question 3
+company = "Coding For All"
+
+#question 4
+print(company)
+
+#question 5
+print(len(company))
+
+#question 6
+print(company.upper())
+
+#question 7
+print(company.lower())
+
+#question 8
+print(company.capitalize())
+print(company.title())
+print(company.swapcase())
+
+#question 9
+print(company[0:6])
+
+#question 10
+print(company.find('Coding'))
+
+#question 11
+print(company.replace('Coding', 'Python'))
+
+#question 12
+new = "Python for Everyone"
+print(new.replace('Everyone', 'All'))
+
+#question 13
+print(company.split(' '))
+
+#question 14
+toto = "Facebook, Google, Microsoft, Apple, IBM, Oracle, Amazon"
+print(toto.split(','))
+
+#question 15
+print(company[0])
+
+#question 16
+print(company[-1])
+
+#question 17
+print(company[10])
+
+#question 18
+text = "Python For Everyone"
+acronym = ''.join([word[0].upper() for word in text.split()])
+print(acronym) 
+
+#question 19
+text = "Coding For All"
+acronym = ''.join([word[0].upper() for word in text.split()])
+print(acronym) 
+
+#question 20
+phrase = "Coding For All"
+index_C = phrase.index('C')
+print("Position de 'C' :", index_C)
+
+#question 21
+index_F = phrase.index('F')
+print("Position de 'F' :", index_F)
+
+#question 22
+phrase2 = "Coding For All People"
+last_l = phrase2.rfind('l')
+print("Dernière position de 'l' :", last_l)  # 23
+
+#question 23
+sentence = "You cannot end a sentence with because because because is a conjunction"
+first_because = sentence.find("because")
+print("Première position de 'because' :", first_because)
+
+#question 24
+last_because = sentence.rindex("because")
+print("Dernière position de 'because' :", last_because)
+
+#question 25
+start = sentence.find("because")
+end = sentence.rfind("because") + len("because")
+sliced = sentence[start:end]
+print("Extrait :", sliced)
+
+#question 26
+pos = sentence.find("because")
+print("Position :", pos)
+
+#question 27
+start = sentence.find("because")
+end = sentence.rfind("because") + len("because")
+print("Sliced phrase:", sentence[start:end])
+
+#question 28
+text = "Coding For All"
+print(text.startswith("Coding"))
+
+#question 29
+print(text.endswith("coding"))
+
+#question 30
+text_with_spaces = "   Coding For All   "
+cleaned = text_with_spaces.strip()
+print(f"'{cleaned}'")
+
+#question 31
+print("30DaysOfPython".isidentifier())         # False → commence par un chiffre
+print("thirty_days_of_python".isidentifier())  # True → nom valide en Python
+
+
+#question 32
+libs = ['Django', 'Flask', 'Bottle', 'Pyramid', 'Falcon']
+joined = ' # '.join(libs)
+print(joined)
+
+#question 33
+print("I am enjoying this challenge.\nI just wonder what is next.")
+
+#question 34
+print("Name\tAge\tCountry\tCity")
+print("Asabeneh\t250\tFinland\tHelsinki")
+
+#question 35
+radius = 10
+area = 3.14 * radius ** 2
+print("The area of a circle with radius {} is {} meters square.".format(radius, int(area)))
+
+#question 36
+a = 8
+b = 6
+
+print("{} + {} = {}".format(a, b, a + b))
+print("{} - {} = {}".format(a, b, a - b))
+print("{} * {} = {}".format(a, b, a * b))
+print("{} / {} = {:.2f}".format(a, b, a / b))       # Format à 2 décimales
+print("{} % {} = {}".format(a, b, a % b))
+print("{} // {} = {}".format(a, b, a // b))
+print("{} ** {} = {}".format(a, b, a ** b))
