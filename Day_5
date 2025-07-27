@@ -1,0 +1,186 @@
+#-----------------------------------------------Day 5 Lists ------------------------------------------
+
+
+
+#--------------Exercice Level 1 --------------
+#--Number 1
+lst0 = []
+
+#--Number 2
+lst = ["toto", "anani", "abalo", "mira", "elfuego", "pythoncode", "folly"]
+
+#--Number 3
+print(len(lst))
+
+#--Number 4
+print(lst[0])
+print(lst[4])
+print(lst[-1])
+
+#--Number 5
+mixed_data_types = ["John Doe", 30, 5.9, "Single", "1234 Elm Street"]
+
+#--Number 6
+it_companies = ["Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle", "Amazon"]
+
+#--Number 7
+print("IT Companies:", it_companies)
+
+# Step 8: 
+print("Number of IT Companies:", len(it_companies))
+
+# Step 9:
+first_company = it_companies[0]
+middle_company = it_companies[len(it_companies) // 2]
+last_company = it_companies[-1]
+print("First:", first_company)
+print("Middle:", middle_company)
+print("Last:", last_company)
+
+# Step 10:
+it_companies[1] = "Alphabet"
+print("Modified List:", it_companies)
+
+# Step 11: 
+it_companies.append("Tesla")
+print("After Append:", it_companies)
+
+# Step 12:
+middle_index = len(it_companies) // 2
+it_companies.insert(middle_index, "Intel")
+print("After Insertion:", it_companies)
+
+# Step 13:
+it_companies[0] = it_companies[0].upper()
+print("Uppercased First Company:", it_companies)
+
+# Step 14: 
+joined_companies = "#; ".join(it_companies)
+print("Joined Companies:", joined_companies)
+
+# Step 15: 
+company_to_check = "Amazon"
+print(f"Is {company_to_check} in the list?", company_to_check in it_companies)
+
+# Step 16: 
+it_companies.sort()
+print("Sorted List:", it_companies)
+
+# Step 17: Reverse the list
+it_companies.reverse()
+print("Reversed List:", it_companies)
+
+# Step 18:
+first_three = it_companies[:3]
+print("First 3 Companies:", first_three)
+
+# Step 19:
+last_three = it_companies[-3:]
+print("Last 3 Companies:", last_three)
+
+# Step 20:
+length = len(it_companies)
+if length % 2 == 0:
+    middle = it_companies[length//2 - 1 : length//2 + 1]
+else:
+    middle = [it_companies[length//2]]
+print("Middle Company/Companies:", middle)
+
+# Step 21:
+it_companies.pop(0)
+print("After Removing First Company:", it_companies)
+
+# Step 22:
+length = len(it_companies)
+if length % 2 == 0:
+    del it_companies[length//2 - 1 : length//2 + 1]
+else:
+    del it_companies[length//2]
+print("After Removing Middle:", it_companies)
+
+# Step 23:
+it_companies.pop()
+print("After Removing Last Company:", it_companies)
+
+# Step 24:
+it_companies.clear()
+print("After Clearing All Companies:", it_companies)
+
+# Step 25:
+del it_companies
+
+# Step 26: 
+front_end = ['HTML', 'CSS', 'JS', 'React', 'Redux']
+back_end = ['Node', 'Express', 'MongoDB']
+full_stack = front_end + back_end
+print("Full Stack:", full_stack)
+
+# Step 27
+full_stack.insert(full_stack.index('Redux') + 1, 'Python')
+full_stack.insert(full_stack.index('Python') + 1, 'SQL')
+print("Updated Full Stack:", full_stack)
+
+
+#--------------Exercice Level 2 --------------
+##Ew=xercice 1
+ages = [19, 22, 19, 24, 20, 25, 26, 24, 25, 24]
+
+# Sort the list
+ages.sort()
+print("Sorted Ages:", ages)
+
+# Find min and max
+min_age = min(ages)
+max_age = max(ages)
+print("Min Age:", min_age)
+print("Max Age:", max_age)
+
+# Add min and max again to the list
+ages.extend([min_age, max_age])
+print("After Adding Min and Max Again:", ages)
+
+# Find median
+ages.sort()
+n = len(ages)
+if n % 2 == 0:
+    median_age = (ages[n//2 - 1] + ages[n//2]) / 2
+else:
+    median_age = ages[n//2]
+print("Median Age:", median_age)
+
+# Average age
+average_age = sum(ages) / len(ages)
+print("Average Age:", average_age)
+
+# Range
+range_age = max_age - min_age
+print("Age Range:", range_age)
+
+# Compare min-average and max-average
+diff_min_avg = abs(min_age - average_age)
+diff_max_avg = abs(max_age - average_age)
+print("Min-Average Difference:", diff_min_avg)
+print("Max-Average Difference:", diff_max_avg)
+
+
+##Exercice 2
+countries = ['China', 'Russia', 'USA', 'Finland', 'Sweden', 'Norway', 'Denmark']
+
+n = len(countries)
+if n % 2 == 0:
+    middle_countries = countries[n//2 - 1: n//2 + 1]
+else:
+    middle_countries = [countries[n//2]]
+print("Middle Country(ies):", middle_countries)
+
+
+#Exercice 3
+first_half = countries[: (n + 1) // 2]  # First half gets the extra if odd
+second_half = countries[(n + 1) // 2 :]
+print("First Half:", first_half)
+print("Second Half:", second_half)
+
+#Exercice 4
+china, russia, usa, *scandic_countries = countries
+print("First Three Countries:", china, russia, usa)
+print("Scandic Countries:", scandic_countries)
