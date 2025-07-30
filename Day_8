@@ -1,0 +1,54 @@
+#-----------------------------------DAY 8 DICTIONNARIES---------------------
+#---Question 1
+dog = {}
+
+#---Question 2
+dog['name'] = 'milou'
+dog['color,'] = 'blue'
+dog['breed,'] = 'Booldog'
+dog['legs,'] = 'long'
+dog['age'] = 4
+print(dog)
+
+#---Question 3
+student = {
+    'first_name' : 'KPATCHA',
+    'last_name' : 'Toto',
+    'gender' : 'M',
+    'age' : '34',
+    'materiaml status' : 'Single',
+    'skills' : ['HTML', 'CSS', 'JS'],
+    'country' : 'USA',
+    'city' : 'London',
+    'adress' : 'kokoye'
+}
+print(student)
+
+#---Question 4
+length = len(student)
+print(length)
+
+#---Question 5
+sk_val = student.get('skills')
+print(type(sk_val))
+
+#---Question 6
+student['skills'].append('NodeJS')
+print(student)
+
+#---Question 7
+keys = student.keys()
+print(keys)
+
+#---Question 8
+values = student.values()
+print(values)
+
+#---Question 9
+print(student.items())
+
+#---Question 10
+student.popitem('skills')
+
+#---Question 11
+del dog
