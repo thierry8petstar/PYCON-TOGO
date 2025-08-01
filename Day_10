@@ -1,0 +1,112 @@
+#--------------------------------------------------------DAY 10--------------------------------------
+#-------------LEVEL 1 ----------------------
+# 1. Iterate 0 to 10 using for loop and while loop
+print("For loop 0 to 10:")
+for i in range(11):
+    print(i, end=' ')
+print("\nWhile loop 0 to 10:")
+i = 0
+while i <= 10:
+    print(i, end=' ')
+    i += 1
+
+print("\n")
+
+# 2. Iterate 10 to 0 using for loop and while loop
+print("For loop 10 to 0:")
+for i in range(10, -1, -1):
+    print(i, end=' ')
+print("\nWhile loop 10 to 0:")
+i = 10
+while i >= 0:
+    print(i, end=' ')
+    i -= 1
+
+print("\n")
+
+# 3. Triangle pattern
+for i in range(1, 8):
+    print("#" * i)
+
+print()
+
+# 4. Nested loops for pattern (8x8 grid)
+for _ in range(8):
+    print("# " * 8)
+
+print()
+
+# 5. Squares pattern
+for i in range(11):
+    print(f"{i} x {i} = {i*i}")
+
+print()
+
+# 6. Iterate through list and print items
+frameworks = ['Python', 'Numpy', 'Pandas', 'Django', 'Flask']
+for item in frameworks:
+    print(item)
+
+print()
+
+# 7. Print even numbers 0 to 100
+for i in range(0, 101, 2):
+    print(i, end=' ')
+print("\n")
+
+# 8. Print odd numbers 0 to 100
+for i in range(1, 101, 2):
+    print(i, end=' ')
+print("\n")
+
+
+#-------------LEVEL 2 ----------------------
+# 1. Sum of all numbers from 0 to 100
+total_sum = 0
+for i in range(101):
+    total_sum += i
+print(f"The sum of all numbers is {total_sum}.")
+
+# 2. Sum of evens and odds from 0 to 100
+sum_even = 0
+sum_odd = 0
+for i in range(101):
+    if i % 2 == 0:
+        sum_even += i
+    else:
+        sum_odd += i
+print(f"The sum of all evens is {sum_even}. And the sum of all odds is {sum_odd}.")
+
+
+#-------------LEVEL 3 ----------------------
+# Sample structure (partial)
+countries_data = [
+    {"name": "China", "population": 1409517397, "languages": ["Chinese"]},
+    {"name": "India", "population": 1339180127, "languages": ["Hindi", "English"]},
+    {"name": "USA", "population": 324459463, "languages": ["English"]},
+    {"name": "Indonesia", "population": 263991379, "languages": ["Indonesian"]},
+    # ... more countries
+]
+
+# i. Total number of languages in the data
+all_languages = set()
+for country in countries_data:
+    for lang in country.get("languages", []):
+        all_languages.add(lang)
+print("Total number of languages:", len(all_languages))
+
+# ii. Ten most spoken languages
+from collections import Counter
+language_counts = Counter()
+for country in countries_data:
+    for lang in country.get("languages", []):
+        language_counts[lang] += 1
+most_spoken = language_counts.most_common(10)
+print("Ten most spoken languages:", most_spoken)
+
+# iii. Ten most populated countries
+sorted_countries = sorted(countries_data, key=lambda x: x["population"], reverse=True)
+top_10_populated = sorted_countries[:10]
+print("Ten most populated countries:")
+for c in top_10_populated:
+    print(f"{c['name']}: {c['population']}")
