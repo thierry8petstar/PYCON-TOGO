@@ -1,0 +1,178 @@
+#-------Day 11 -----------FUNCTIONS-------------------------
+#--------------LEVEL 1 ----------------
+import math
+from collections import Counter
+
+# 1
+def add_two_numbers(a, b):
+    return a + b
+
+# 2
+def area_of_circle(radius):
+    return math.pi * radius ** 2
+
+# 3
+def add_all_nums(*args):
+    if all(isinstance(i, (int, float)) for i in args):
+        return sum(args)
+    else:
+        return "All arguments must be numbers."
+
+# 4
+def convert_celsius_to_fahrenheit(celsius):
+    return (celsius * 9/5) + 32
+
+# 5
+def check_season(month):
+    month = month.lower()
+    if month in ['december', 'january', 'february']:
+        return 'Winter'
+    elif month in ['march', 'april', 'may']:
+        return 'Spring'
+    elif month in ['june', 'july', 'august']:
+        return 'Summer'
+    elif month in ['september', 'october', 'november']:
+        return 'Autumn'
+    else:
+        return "Invalid month"
+
+# 6
+def calculate_slope(x1, y1, x2, y2):
+    if x2 - x1 == 0:
+        return "Undefined slope"
+    return (y2 - y1) / (x2 - x1)
+
+# 7
+def solve_quadratic_eqn(a, b, c):
+    discriminant = b ** 2 - 4 * a * c
+    if discriminant < 0:
+        return "No real roots"
+    elif discriminant == 0:
+        x = -b / (2 * a)
+        return [x]
+    else:
+        x1 = (-b + math.sqrt(discriminant)) / (2 * a)
+        x2 = (-b - math.sqrt(discriminant)) / (2 * a)
+        return [x1, x2]
+
+# 8
+def print_list(lst):
+    for item in lst:
+        print(item)
+
+# 9
+def reverse_list(lst):
+    reversed_lst = []
+    for i in range(len(lst)-1, -1, -1):
+        reversed_lst.append(lst[i])
+    return reversed_lst
+
+# 10
+def capitalize_list_items(lst):
+    return [str(item).capitalize() for item in lst]
+
+# 11
+def add_item(lst, item):
+    return lst + [item]
+
+# 12
+def remove_item(lst, item):
+    return [i for i in lst if i != item]
+
+# 13
+def sum_of_numbers(n):
+    return sum(range(n + 1))
+
+# 14
+def sum_of_odds(n):
+    return sum(i for i in range(n + 1) if i % 2 != 0)
+
+# 15
+def sum_of_even(n):
+    return sum(i for i in range(n + 1) if i % 2 == 0)
+
+
+
+#--------------LEVEL 2 ----------------
+# 1
+def evens_and_odds(n):
+    evens = sum(1 for i in range(n + 1) if i % 2 == 0)
+    odds = n + 1 - evens
+    return f"The number of odds are {odds}.\nThe number of evens are {evens}."
+
+# 2
+def factorial(n):
+    if n == 0:
+        return 1
+    result = 1
+    for i in range(1, n+1):
+        result *= i
+    return result
+
+# 3
+def is_empty(param):
+    return not bool(param)
+
+# 4
+def calculate_mean(lst):
+    return sum(lst) / len(lst)
+
+def calculate_median(lst):
+    lst = sorted(lst)
+    n = len(lst)
+    if n % 2 == 0:
+        return (lst[n//2 - 1] + lst[n//2]) / 2
+    else:
+        return lst[n//2]
+
+def calculate_mode(lst):
+    freq = Counter(lst)
+    max_freq = max(freq.values())
+    mode = [key for key, val in freq.items() if val == max_freq]
+    return mode if len(mode) > 1 else mode[0]
+
+def calculate_range(lst):
+    return max(lst) - min(lst)
+
+def calculate_variance(lst):
+    mean = calculate_mean(lst)
+    return sum((x - mean) ** 2 for x in lst) / len(lst)
+
+def calculate_std(lst):
+    return math.sqrt(calculate_variance(lst))
+
+
+
+#--------------LEVEL 3 ----------------
+# 1
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+# 2
+def all_items_unique(lst):
+    return len(lst) == len(set(lst))
+
+# 3
+def all_same_type(lst):
+    return all(isinstance(i, type(lst[0])) for i in lst)
+
+# 4
+def is_valid_variable(var):
+    import keyword
+    return var.isidentifier() and not keyword.iskeyword(var)
+
+# 5 - Requires `countries_data` from file
+def most_spoken_languages(countries_data, top_n=10):
+    language_counter = Counter()
+    for country in countries_data:
+        language_counter.update(country['languages'])
+    return language_counter.most_common(top_n)
+
+def most_populated_countries(countries_data, top_n=10):
+    sorted_countries = sorted(countries_data, key=lambda x: x['population'], reverse=True)
+    return sorted_countries[:top_n]
