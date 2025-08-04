@@ -1,0 +1,37 @@
+--------------------------------------DAY 13 LISTS-----------------------------------
+# 1. Filter only negative and zero in the list using list comprehension
+numbers = [-4, -3, -2, -1, 0, 2, 4, 6]
+neg_zero = [num for num in numbers if num <= 0]
+print("1.", neg_zero)
+
+# 2. Flatten list_of_lists to one dimensional list
+list_of_lists = [[[1, 2, 3]], [[4, 5, 6]], [[7, 8, 9]]]
+flattened = [num for sublist in list_of_lists for inner in sublist for num in inner]
+print("2.", flattened)
+
+# 3. Create list of tuples
+tuple_list = [(x, 1, x, x**2, x**3, x**4, x**5) for x in range(11)]
+print("3.", tuple_list)
+
+# 4. Flatten countries list to new format
+countries = [[('Finland', 'Helsinki')], [('Sweden', 'Stockholm')], [('Norway', 'Oslo')]]
+flat_countries = [[country.upper(), country[:3].upper(), city.upper()] for [[(country, city)]] in countries]
+print("4.", flat_countries)
+
+# 5. Change list to list of dictionaries
+country_dicts = [{'country': country.upper(), 'city': city.upper()} for [[(country, city)]] in countries]
+print("5.", country_dicts)
+
+# 6. Change list of lists to list of concatenated strings
+names = [[('Asabeneh', 'Yetayeh')], [('David', 'Smith')], [('Donald', 'Trump')], [('Bill', 'Gates')]]
+full_names = [f"{first} {last}" for [[(first, last)]] in names]
+print("6.", full_names)
+
+# 7. Lambda function for slope and y-intercept
+# For two points (x1, y1), (x2, y2):
+slope = lambda x1, y1, x2, y2: (y2 - y1) / (x2 - x1) if x2 != x1 else None
+y_intercept = lambda x1, y1, x2, y2: y1 - slope(x1, y1, x2, y2) * x1 if slope(x1, y1, x2, y2) is not None else None
+
+# Example usage:
+print("7. Slope between (1,2) and (3,6):", slope(1, 2, 3, 6))
+print("   Y-intercept between (1,2) and (3,6):", y_intercept(1, 2, 3, 6))
