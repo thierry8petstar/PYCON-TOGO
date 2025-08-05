@@ -1,0 +1,134 @@
+# Day 7 Exercises - Levels 1, 2, 3
+# ================================
+
+from functools import reduce
+import operator
+
+# === Level 1 ===
+
+# Exercise 1
+map_explanation = "map(func, iterable) -> apply func to each item"
+filter_explanation = "filter(func, iterable) -> keep items where func returns True"
+reduce_explanation = "reduce(func, iterable) -> reduce iterable to single value using func"
+
+# Exercise 2
+hof_explanation = "Higher-order function takes or returns a function"
+closure_explanation = "Closure captures enclosing scope variables"
+decorator_explanation = "Decorator wraps a function to modify its behavior"
+
+# Exercise 3
+def square(x): return x * x
+def is_even(x): return x % 2 == 0
+def add(x, y): return x + y
+
+# Exercise 4, 5, 6
+countries = ["Finland", "Sweden", "Denmark"]
+names = ["Asabeneh", "Lidiya", "Michael"]
+numbers = [1, 2, 3, 4, 5]
+
+for country in countries:
+    print(country)
+for name in names:
+    print(name)
+for number in numbers:
+    print(number)
+
+# === Level 2 ===
+
+countries_list = ["Estonia", "Finland", "Sweden", "Denmark", "Norway", "Iceland"]
+numbers_list = [1, 2, 3, 4, 5]
+names_list = ["Asabeneh", "Mathias", "Elias", "Brook"]
+
+# Exercise 1
+upper_countries = list(map(str.upper, countries_list))
+
+# Exercise 2
+squared_numbers = list(map(lambda x: x ** 2, numbers_list))
+
+# Exercise 3
+upper_names = list(map(str.upper, names_list))
+
+# Exercise 4
+countries_with_land = list(filter(lambda x: "land" in x.lower(), countries_list))
+
+# Exercise 5
+countries_six_chars = list(filter(lambda x: len(x) == 6, countries_list))
+
+# Exercise 6
+countries_six_or_more = list(filter(lambda x: len(x) >= 6, countries_list))
+
+# Exercise 7
+countries_start_E = list(filter(lambda x: x.startswith("E"), countries_list))
+
+# Exercise 8
+chained_result = reduce(lambda a, b: a + ", " + b,
+                        filter(lambda x: x.startswith("E"),
+                               map(str.title, countries_list)), "").lstrip(", ")
+
+# Exercise 9
+def get_string_lists(lst):
+    return [item for item in lst if isinstance(item, str)]
+
+# Exercise 10
+sum_numbers = reduce(operator.add, numbers_list)
+
+# Exercise 11
+def countries_sentence(countries):
+    *head, last = countries
+    return f"{', '.join(head)}, and {last} are north European countries"
+
+sentence = countries_sentence(["Estonia", "Finland", "Sweden", "Denmark", "Norway", "Iceland"])
+
+# Exercise 12
+def categorize_countries(countries):
+    patterns = ["land", "ia", "island", "stan"]
+    return {p: [c for c in countries if p in c.lower()] for p in patterns}
+
+# Exercise 13
+def starting_letter_counts(countries):
+    count = {}
+    for c in countries:
+        key = c[0].upper()
+        count[key] = count.get(key, 0) + 1
+    return count
+
+# Exercise 14
+def get_first_ten_countries(countries):
+    return countries[:10]
+
+# Exercise 15
+def get_last_ten_countries(countries):
+    return countries[-10:]
+
+# === Level 3 ===
+
+COUNTRIES_DATA = [
+    {"name": "Finland", "capital": "Helsinki", "population": 5536146, "languages": ["Finnish", "Swedish"]},
+    {"name": "Sweden", "capital": "Stockholm", "population": 10353442, "languages": ["Swedish"]},
+    {"name": "Denmark", "capital": "Copenhagen", "population": 5814461, "languages": ["Danish"]},
+    {"name": "Norway", "capital": "Oslo", "population": 5379475, "languages": ["Norwegian"]},
+    {"name": "Iceland", "capital": "Reykjavik", "population": 366425, "languages": ["Icelandic"]},
+    {"name": "India", "capital": "New Delhi", "population": 1393409038, "languages": ["Hindi", "English"]},
+    {"name": "Pakistan", "capital": "Islamabad", "population": 220892331, "languages": ["Urdu", "English"]},
+    {"name": "Estonia", "capital": "Tallinn", "population": 1326590, "languages": ["Estonian"]}
+]
+
+# Exercise 1a
+sorted_by_name = sorted(COUNTRIES_DATA, key=lambda x: x['name'])
+
+# Exercise 1b
+sorted_by_capital = sorted(COUNTRIES_DATA, key=lambda x: x['capital'])
+
+# Exercise 1c
+sorted_by_population = sorted(COUNTRIES_DATA, key=lambda x: x['population'], reverse=True)
+
+# Exercise 2
+from collections import Counter
+
+def most_spoken_languages(data, n):
+    lang_counter = Counter(lang for c in data for lang in c['languages'])
+    return lang_counter.most_common(n)
+
+# Exercise 3
+def most_populated_countries(data, n):
+    return sorted(data, key=lambda x: x['population'], reverse=True)[:n]
