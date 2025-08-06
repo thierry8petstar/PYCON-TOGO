@@ -1,0 +1,75 @@
+#----------------------------Day 15 ERRORS-------------------------
+python          
+Python 3.10.13 (main, Aug  4 2025, 18:44:40) [GCC 14.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> print 'hello world'
+  File "<stdin>", line 1
+    print 'hello world'
+    ^^^^^^^^^^^^^^^^^^^
+SyntaxError: Missing parentheses in call to 'print'. Did you mean print(...)?
+>>> print('hello world')
+hello world
+>>> print(age)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'age' is not defined
+>>> age = 25
+>>> print(age)
+25
+>>> numbers = [1, 2, 3, 4, 5]
+>>> numbers[5]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: list index out of range
+>>> numbers = [1, 2, 3, 4, 5]
+>>> numbers[4]  # last index is 4
+5
+>>> import maths
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'maths'
+>>> import math
+>>> import math
+>>> math.PI
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: module 'math' has no attribute 'PI'. Did you mean: 'pi'?
+>>> import math
+>>> math.pi
+3.141592653589793
+>>> user = {'name':'Asab', 'age':250, 'country':'Finland'}
+>>> user['county']
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyError: 'county'
+>>> user = {'name':'Asab', 'age':250, 'country':'Finland'}
+>>> user['country']
+'Finland'
+>>> 4 + '3'
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+>>> 4 + int('3')  # result: 7
+7
+>>> str(4) + '3'  # result: '43'
+'43'
+>>> from math import power
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ImportError: cannot import name 'power' from 'math' (/usr/local/lib/python3.10/lib-dynload/math.cpython-310-x86_64-linux-gnu.so)
+>>> from math import pow
+>>> pow(2,3)  # result: 8.0
+8.0
+>>> int('12a')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: invalid literal for int() with base 10: '12a'
+>>> int('12')  # result: 12
+12
+>>> 1/0
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ZeroDivisionError: division by zero
+>>> 1/1  # or any number other than 0
+1.0
+>>> 
