@@ -1,0 +1,65 @@
+from datetime import datetime
+
+# -------- Day 16: Datetime Exercises --------
+
+# Exercise 1: Get current day, month, year, hour, minute, and timestamp
+now = datetime.now()
+day = now.day
+month = now.month
+year = now.year
+hour = now.hour
+minute = now.minute
+timestamp = now.timestamp()
+
+# Exercise 2: Format the current date
+formatted_date = now.strftime("%m/%d/%Y, %H:%M:%S")
+
+# Exercise 3: Convert time string to datetime
+date_string = "5 December, 2019"
+converted_date = datetime.strptime(date_string, "%d %B, %Y")
+
+# Exercise 4: Time difference between now and New Year
+new_year = datetime(now.year + 1, 1, 1)
+time_until_new_year = new_year - now
+
+# Exercise 5: Time difference from 1 January 1970
+epoch = datetime(1970, 1, 1)
+time_since_epoch = now - epoch
+
+# Exercise 6: Usage examples of datetime
+datetime_usage = """
+ You can use the datetime module for:
+
+- Time series analysis (e.g. tracking data changes over time)
+- Timestamps for user actions in an application
+- Adding date/time to blog posts, logs, messages, etc.
+- Calculating time intervals and durations
+- Scheduling tasks or notifications
+"""
+
+# Display all results
+results = f"""
+-------- Day 16: Datetime Exercises --------
+
+Exercise 1:
+Day: {day}, Month: {month}, Year: {year}
+Hour: {hour}, Minute: {minute}
+Timestamp: {timestamp}
+
+Exercise 2:
+Formatted Date: {formatted_date}
+
+Exercise 3:
+Converted Date: {converted_date}
+
+Exercise 4:
+Time Until New Year: {time_until_new_year}
+
+Exercise 5:
+Time Since 1 Jan 1970: {time_since_epoch}
+
+Exercise 6:
+{datetime_usage}
+"""
+
+results
