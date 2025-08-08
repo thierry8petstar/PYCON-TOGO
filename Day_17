@@ -1,0 +1,14 @@
+# Given list of countries
+names = ['Finland', 'Sweden', 'Norway', 'Denmark', 'Iceland', 'Estonia', 'Russia']
+
+# Solution 1: Using extended unpacking (recommended)
+*nordic_countries, es, ru = names
+
+# Alternative Solution 2: Using slicing
+# nordic_countries = names[:5]
+# es, ru = names[5], names[6]
+
+# Print results
+print("Nordic Countries:", nordic_countries)  # Output: ['Finland', 'Sweden', 'Norway', 'Denmark', 'Iceland']
+print("Estonia:", es)                         # Output: Estonia
+print("Russia:", ru)                          # Output: Russia
