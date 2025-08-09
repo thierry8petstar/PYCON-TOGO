@@ -1,0 +1,66 @@
+import re
+from collections import Counter
+
+# -------------------------
+# Exercises: Level 1
+# -------------------------
+
+# 1. Most frequent word in paragraph
+paragraph = '''I love teaching. If you do not love teaching
+what else can you love. I love Python if you do not love
+something which can give you all the capabilities to develop
+an application what else can you love.'''
+
+# Clean and split paragraph
+words = re.findall(r'\b\w+\b', paragraph)
+word_counts = Counter(words)
+print("Exercise 1 - Most frequent words:")
+print(word_counts.most_common())
+
+# 2. Distance between furthest particles
+text_points = "-12, -4, -3, -1, 0, 4, 8"
+points = list(map(int, re.findall(r'-?\d+', text_points)))
+distance = max(points) - min(points)
+print("\nExercise 2 - Points extracted:", points)
+print("Sorted points:", sorted(points))
+print("Distance between furthest:", distance)
+
+# -------------------------
+# Exercises: Level 2
+# -------------------------
+
+def is_valid_variable(name):
+    return re.match(r'^[a-zA-Z_]\w*$', name) is not None
+
+print("\nExercise Level 2 - Valid variable checks:")
+print(is_valid_variable('first_name'))  # True
+print(is_valid_variable('first-name'))  # False
+print(is_valid_variable('1first_name')) # False
+print(is_valid_variable('firstname'))   # True
+
+# -------------------------
+# Exercises: Level 3
+# -------------------------
+
+# Clean text function
+def clean_text(text):
+    return re.sub(r'[^\w\s]', '', text)
+
+# Count most frequent words
+def most_frequent_words(text, n=3):
+    words = text.split()
+    counts = Counter(words)
+    return counts.most_common(n)
+
+sentence = '''%I $am@% a %tea@cher%, &and& I lo%#ve
+%tea@ching%;. There $is nothing; &as& mo@re rewarding as
+educa@ting &and& @emp%o@wering peo@ple. ;I found tea@ching
+m%o@re interesting tha@n any other %jo@bs. %Do@es thi%s
+mo@tivate yo@u to be a tea@cher!?'''
+
+cleaned_text = clean_text(sentence)
+print("\nExercise Level 3 - Cleaned text:")
+print(cleaned_text)
+
+print("\nMost frequent words in cleaned text:")
+print(most_frequent_words(cleaned_text))
