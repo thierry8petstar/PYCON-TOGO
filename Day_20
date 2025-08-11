@@ -1,0 +1,131 @@
+import requests
+from collections import Counter
+import numpy as np
+import pandas as pd
+from bs4 import BeautifulSoup
+
+# ------------------------------------------
+# Exercise 1: Top 10 most frequent words in Romeo and Juliet
+# ------------------------------------------
+print("\n🔹 Exercise 1: Top 10 Words in Romeo and Juliet\n")
+
+url_rj = 'http://www.gutenberg.org/files/1112/1112.txt'
+text_rj = requests.get(url_rj).text
+
+words = text_rj.lower().split()
+cleaned_words = [word.strip(".,!?\"';:-_()[]{}") for word in words if word.isalpha()]
+word_counts = Counter(cleaned_words)
+top_10_words = word_counts.most_common(10)
+
+for word, count in top_10_words:
+    print(f"{word}: {count}")
+
+# ------------------------------------------
+# Exercise 2: Cats API analysis
+# ------------------------------------------
+print("\n🔹 Exercise 2: Cats API Statistics\n")
+
+url_cats = 'https://api.thecatapi.com/v1/breeds'
+cats_data = requests.get(url_cats).json()
+
+weights = []
+lifespans = []
+country_breed = []
+
+for cat in cats_data:
+    # Weight (metric)
+    if 'weight' in cat and 'metric' in cat['weight']:
+        try:
+            min_w, max_w = map(float, cat['weight']['metric'].split(' - '))
+            weights.append((min_w + max_w) / 2)
+        except:
+            pass
+
+    # Lifespan
+    if 'life_span' in cat:
+        try:
+            min_ls, max_ls = map(float, cat['life_span'].split(' - '))
+            lifespans.append((min_ls + max_ls) / 2)
+        except:
+            pass
+
+    # Country and breed
+    if 'origin' in cat and 'name' in cat:
+        country_breed.append((cat['origin'], cat['name']))
+
+# Weight stats
+print("🐱 Cat Weight Stats (kg):")
+print(f"Min: {np.min(weights)}")
+print(f"Max: {np.max(weights)}")
+print(f"Mean: {np.mean(weights):.2f}")
+print(f"Median: {np.median(weights)}")
+print(f"Std Dev: {np.std(weights):.2f}")
+
+# Lifespan stats
+print("\n🐱 Cat Lifespan Stats (years):")
+print(f"Min: {np.min(lifespans)}")
+print(f"Max: {np.max(lifespans)}")
+print(f"Mean: {np.mean(lifespans):.2f}")
+print(f"Median: {np.median(lifespans)}")
+print(f"Std Dev: {np.std(lifespans):.2f}")
+
+# Country and breed frequency table
+df_country_breed = pd.DataFrame(country_breed, columns=['Country', 'Breed'])
+print("\nTop Countries by Number of Cat Breeds:")
+print(df_country_breed['Country'].value_counts().head(10))
+
+# ------------------------------------------
+# Exercise 3: Countries API Analysis
+# ------------------------------------------
+print("\n🔹 Exercise 3: Countries API Analysis\n")
+
+url_countries = 'https://restcountries.com/v3.1/all'
+countries_data = requests.get(url_countries).json()
+
+# 10 Largest countries by area
+countries_area = [(country['name']['common'], country.get('area', 0)) for country in countries_data]
+largest_countries = sorted(countries_area, key=lambda x: x[1], reverse=True)[:10]
+
+print("🌍 10 Largest Countries by Area:")
+for name, area in largest_countries:
+    print(f"{name}: {area} km²")
+
+# 10 Most spoken languages
+language_counter = Counter()
+for country in countries_data:
+    languages = country.get('languages', {})
+    for lang in languages.values():
+        language_counter[lang] += 1
+
+print("\n🗣️ 10 Most Spoken Languages (number of countries):")
+for lang, count in language_counter.most_common(10):
+    print(f"{lang}: {count}")
+
+# Total number of unique languages
+total_languages = len(language_counter)
+print(f"\n🌐 Total Number of Unique Languages: {total_languages}")
+
+# ------------------------------------------
+# Exercise 4: Scrape UCI Machine Learning Datasets
+# ------------------------------------------
+print("\n🔹 Exercise 4: UCI Datasets (First 10 names)\n")
+
+uci_url = "https://archive.ics.uci.edu/ml/datasets.php"
+response = requests.get(uci_url)
+soup = BeautifulSoup(response.content, 'html.parser')
+
+# Scrape dataset names (1st column of the main table)
+table = soup.find_all('table')[5]  # the 6th table on the page is the dataset table
+rows = table.find_all('tr')[1:]   # skip header
+
+dataset_names = []
+
+for row in rows:
+    cols = row.find_all('td')
+    if cols:
+        dataset_name = cols[0].text.strip()
+        dataset_names.append(dataset_name)
+
+print("📊 First 10 UCI Datasets:")
+for name in dataset_names[:10]:
+    print(f"- {name}")
