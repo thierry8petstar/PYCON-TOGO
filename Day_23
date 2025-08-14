@@ -1,0 +1,11 @@
+# Step 1: Create project directory
+mkdir day23_project && cd day23_project
+
+# Step 2: Create virtual environment
+python -m venv venv
+
+# Step 3: Create a sample requirements.txt (optional)
+echo "requests" > requirements.txt
+
+# Step 4: Instructions to activate environment
+echo "source venv/bin/activate"
