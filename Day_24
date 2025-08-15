@@ -1,0 +1,212 @@
+# Importing numpy
+import numpy as np
+
+# Check version
+print('numpy:', np.__version__)
+print(dir(np))
+
+# Create Python list
+python_list = [1, 2, 3, 4, 5]
+print('Type:', type(python_list))
+print(python_list)
+
+# Create 2D list
+two_dimensional_list = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
+print(two_dimensional_list)
+
+# Create numpy array from list
+numpy_array_from_list = np.array(python_list)
+print(type(numpy_array_from_list))
+print(numpy_array_from_list)
+
+# Create float array
+numy_array_from_list2 = np.array(python_list, dtype=float)
+print(numy_array_from_list2)
+
+# Create boolean array
+numpy_bool_array = np.array([0, 1, -1, 0, 0], dtype=bool)
+print(numpy_bool_array)
+
+# 2D numpy array
+numpy_two_dimensional_list = np.array(two_dimensional_list)
+print(type(numpy_two_dimensional_list))
+print(numpy_two_dimensional_list)
+
+# Convert to list
+np_to_list = numpy_array_from_list.tolist()
+print(type(np_to_list))
+print('1D:', np_to_list)
+print('2D:', numpy_two_dimensional_list.tolist())
+
+# Create numpy array from tuple
+python_tuple = (1, 2, 3, 4, 5)
+numpy_array_from_tuple = np.array(python_tuple)
+print(numpy_array_from_tuple)
+
+# Shape
+nums = np.array([1, 2, 3, 4, 5])
+print('shape of nums:', nums.shape)
+print('shape of 2D list:', numpy_two_dimensional_list.shape)
+
+three_by_four_array = np.array([[0, 1, 2, 3],
+                                [4, 5, 6, 7],
+                                [8, 9, 10, 11]])
+print(three_by_four_array.shape)
+
+# Data types
+int_lists = [-3, -2, -1, 0, 1, 2, 3]
+int_array = np.array(int_lists)
+float_array = np.array(int_lists, dtype=float)
+print(int_array)
+print(int_array.dtype)
+print(float_array)
+print(float_array.dtype)
+
+# Size
+print('Size 1D:', numpy_array_from_list.size)
+print('Size 2D:', numpy_two_dimensional_list.size)
+
+# Math operations
+print(numpy_array_from_list + 10)
+print(numpy_array_from_list - 10)
+print(numpy_array_from_list * 10)
+print(numpy_array_from_list / 10)
+print(numpy_array_from_list % 3)
+print(numpy_array_from_list // 10)
+print(numpy_array_from_list ** 2)
+
+# Type checks
+numpy_int_arr = np.array([1, 2, 3, 4])
+numpy_float_arr = np.array([1.1, 2.0, 3.2])
+numpy_bool_arr = np.array([-3, -2, 0, 1, 2, 3], dtype='bool')
+print(numpy_int_arr.dtype)
+print(numpy_float_arr.dtype)
+print(numpy_bool_arr.dtype)
+
+# Type conversion
+print(np.array([1, 2, 3, 4], dtype='float'))
+print(np.array([1., 2., 3., 4.], dtype='int'))
+print(np.array([-3, -2, 0, 1, 2, 3], dtype='bool'))
+print(np.array([1., 2., 3.]).astype('int').astype('str'))
+
+# Multidimensional arrays
+two_dimension_array = np.array([(1, 2, 3), (4, 5, 6), (7, 8, 9)])
+print('Shape:', two_dimension_array.shape)
+print('Size:', two_dimension_array.size)
+print('Data type:', two_dimension_array.dtype)
+
+# Indexing
+print('First row:', two_dimension_array[0])
+print('Second row:', two_dimension_array[1])
+print('Third row:', two_dimension_array[2])
+print('First column:', two_dimension_array[:, 0])
+print('Second column:', two_dimension_array[:, 1])
+print('Third column:', two_dimension_array[:, 2])
+
+# Slicing
+print(two_dimension_array[0:2, 0:2])
+
+# Reverse
+print(two_dimension_array[::-1, ::-1])
+
+# Missing values
+two_dimension_array[1, 1] = 55
+two_dimension_array[1, 2] = 44
+print(two_dimension_array)
+
+# Zeros and Ones
+numpy_zeroes = np.zeros((3, 3), dtype=int)
+print(numpy_zeroes)
+numpy_ones = np.ones((3, 3), dtype=int)
+print(numpy_ones)
+
+# Reshape
+first_shape = np.array([(1, 2, 3), (4, 5, 6)])
+reshaped = first_shape.reshape(3, 2)
+print(reshaped)
+flattened = reshaped.flatten()
+print(flattened)
+
+# Stack
+np_list_one = np.array([1, 2, 3])
+np_list_two = np.array([4, 5, 6])
+print(np.hstack((np_list_one, np_list_two)))
+print(np.vstack((np_list_one, np_list_two)))
+
+# Random numbers
+random_float = np.random.random()
+print(random_float)
+random_floats = np.random.random(5)
+print(random_floats)
+random_int = np.random.randint(2, 10, size=(3, 3))
+print(random_int)
+
+# Normal distribution
+normal_array = np.random.normal(79, 15, 80)
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set()
+plt.hist(normal_array, color="grey", bins=50)
+plt.show()
+
+# Matrix
+four_by_four_matrix = np.matrix(np.ones((4, 4), dtype=float))
+np.asarray(four_by_four_matrix)[2] = 2
+print(four_by_four_matrix)
+
+# Arange
+whole_numbers = np.arange(0, 20, 1)
+print(whole_numbers)
+odd_numbers = np.arange(1, 20, 2)
+print(odd_numbers)
+even_numbers = np.arange(2, 20, 2)
+print(even_numbers)
+
+# Linspace and logspace
+print(np.linspace(1.0, 5.0, num=10))
+print(np.linspace(1.0, 5.0, num=5, endpoint=False))
+print(np.logspace(2, 4.0, num=4))
+
+# Itemsize
+x = np.array([1, 2, 3], dtype=np.complex128)
+print(x.itemsize)
+
+# Slicing again
+np_list = np.array([(1, 2, 3), (4, 5, 6)])
+print('First row:', np_list[0])
+print('Second row:', np_list[1])
+print('First column:', np_list[:, 0])
+print('Second column:', np_list[:, 1])
+print('Third column:', np_list[:, 2])
+
+# Numpy stats functions
+np_normal_dis = np.random.normal(5, 0.5, 1000)
+from scipy import stats
+print('min:', np.min(np_normal_dis))
+print('max:', np.max(np_normal_dis))
+print('mean:', np.mean(np_normal_dis))
+print('median:', np.median(np_normal_dis))
+print('mode:', stats.mode(np_normal_dis, keepdims=False))
+print('sd:', np.std(np_normal_dis))
+
+plt.hist(np_normal_dis, color="grey", bins=21)
+plt.show()
+
+# Dot product
+f = np.array([1, 2, 3])
+g = np.array([4, 5, 3])
+print(np.dot(f, g))
+
+# Matrix multiplication
+h = [[1, 2], [3, 4]]
+i = [[5, 6], [7, 8]]
+print(np.matmul(h, i))
+
+# Determinant
+print(np.linalg.det(i))
+
+# Checkerboard pattern
+Z = np.zeros((8, 8))
+Z[1::2, ::2] = 1
+Z[::2, 1::2] = 1
+print(Z)
