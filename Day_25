@@ -1,0 +1,41 @@
+import pandas as pd
+
+# 1. Lire le fichier hacker_news.csv
+df = pd.read_csv("data/hacker_news.csv")
+
+# 2. Afficher les 5 premières lignes
+print("First 5 rows:")
+print(df.head(), "\n")
+
+# 3. Afficher les 5 dernières lignes
+print("Last 5 rows:")
+print(df.tail(), "\n")
+
+# 4. Extraire la colonne 'title' comme Series
+titles = df["title"]
+print("Title column as pandas Series:")
+print(titles.head(), "\n")
+
+# 5. Compter le nombre de lignes et colonnes
+rows, cols = df.shape
+print(f"Number of rows: {rows}, Number of columns: {cols}\n")
+
+# 6. Filtrer les titres contenant "python"
+python_titles = df[df["title"].str.contains("python", case=False, na=False)]
+print("Titles containing 'python':")
+print(python_titles[["title"]].head(), "\n")
+
+# 7. Filtrer les titres contenant "JavaScript"
+js_titles = df[df["title"].str.contains("javascript", case=False, na=False)]
+print("Titles containing 'JavaScript':")
+print(js_titles[["title"]].head(), "\n")
+
+# 8. Exploration rapide
+print("Exploration rapide des données:")
+print("Most common words in titles:")
+all_words = " ".join(df["title"].dropna().str.lower()).split()
+word_freq = pd.Series(all_words).value_counts().head(10)
+print(word_freq, "\n")
+
+print("Nombre de titres contenant 'python':", len(python_titles))
+print("Nombre de titres contenant 'javascript':", len(js_titles))
